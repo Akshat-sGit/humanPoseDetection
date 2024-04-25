@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Tracker</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        h2{
+            font-size: 30px;
+            margin-bottom: 200px;
+        }
+        a {
+            display:flex;
+            text-decoration:none;
+            color:black;
+            font-size: 18px;
+            padding: 10px 20px;
+            width:150px;
+            border-radius:15px;
+            margin:100px 0 50px 800px;
+            cursor: pointer;
+            background-color:cyan;
+        }
+    </style>
+</head>
+<body>
+    <h1> HUMAN POSE ESTIMATION AI PROJECT </h1>
+    <h1>Select Exercise</h1>
+    <a href = "/bicep_curl"> bicep curl </a>
+    <a href = "/shoulder_press"> shoulder_press </a>
+    <a href = "/push_up"> Push_up </a>
+
+    <script>
+        function startExercise(exercise) {
+            // Make an AJAX request to the Flask backend
+            fetch('/start-exercise', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ exercise }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+</body>
+</html>
